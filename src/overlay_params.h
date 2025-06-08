@@ -259,6 +259,7 @@ enum overlay_param_enabled {
 };
 
 struct overlay_params {
+   bool enable_dot = false;
    bool enabled[OVERLAY_PARAM_ENABLED_MAX];
    enum overlay_param_position position;
    int control;

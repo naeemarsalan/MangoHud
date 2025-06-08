@@ -1,3 +1,4 @@
+#include "hud_dot.h"
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
@@ -737,6 +738,7 @@ void render_imgui(swapchain_stats& data, struct overlay_params& params, ImVec2& 
        ImGui::End();
        ImGui::PopStyleVar();
      }
+   render_dot_imgui(params);
 }
 
 void init_cpu_stats(overlay_params& params)

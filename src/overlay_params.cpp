@@ -610,6 +610,9 @@ initialize_preset(struct overlay_params *params)
 static void
 set_parameters_from_options(struct overlay_params *params)
 {
+   for (const auto& opt : params->options) {
+    SPDLOG_INFO("[MANGOHUD] CONFIG MAP: '{}' => '{}'", opt.first, opt.second);
+   }
    bool read_cfg = false;
    if (params->options.find("read_cfg") != params->options.end() && params->options.find("read_cfg")->second != "0")
       read_cfg = true;
@@ -664,6 +667,10 @@ set_parameters_from_options(struct overlay_params *params)
       #undef OVERLAY_PARAM_CUSTOM
       if (it.first == "preset") {
          continue; // Handled above
+      }
+      if (it.first == "dot") {
+         SPDLOG_INFO("[MANGOHUD] Whitelisted option 'dot' found!");
+         continue;
       }
       SPDLOG_ERROR("Unknown option '{}'", it.first.c_str());
    }
